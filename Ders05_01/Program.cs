@@ -26,21 +26,21 @@ namespace Ders05_01
         static void TrEnKelimeBul(Dictionary<string, string> sozluk) 
         {                        
             Console.Write($"Türkçe kelimeyi giriniz:");
-            string tkelime = Console.ReadLine();
+            string tkelime = Console.ReadLine().ToLower();
             if (sozluk.Keys.Contains(tkelime))
-                Console.WriteLine($"{tkelime} kelimesinin İngilizce karşılığı {sozluk[tkelime]} dır.");
+                Console.WriteLine($"{tkelime.ToUpper()} kelimesinin İngilizce karşılığı {sozluk[tkelime].ToUpper()} dır.");
             else
-                Console.WriteLine($"{tkelime} kelimesi sözlükte bulunamadı.");
+                Console.WriteLine($"{tkelime.ToUpper()} kelimesi sözlükte bulunamadı.");
         }
 
         static void EnTrKelimeBul(Dictionary<string, string> sozluk)
         {
             Console.Write($"İngilizce kelimeyi giriniz:");
-            string ekelime = Console.ReadLine();
+            string ekelime = Console.ReadLine().ToLower();
             if (sozluk.Keys.Contains(ekelime))
-                Console.WriteLine($"{ekelime} kelimesinin Türkçe karşılığı {sozluk[ekelime]} dır.");
+                Console.WriteLine($"{ekelime.ToUpper()} kelimesinin Türkçe karşılığı {sozluk[ekelime].ToUpper()} dır.");
             else
-                Console.WriteLine($"{ekelime} kelimesi sözlükte bulunamadı.");
+                Console.WriteLine($"{ekelime.ToUpper()} kelimesi sözlükte bulunamadı.");
         }
 
         static void TrEnKelimeEkle(Dictionary<string, string> sozluk) 
@@ -51,9 +51,22 @@ namespace Ders05_01
             Console.Write($"{tkelime} kelimesinin İngilizcesini giriniz:");
             string ekelime = Console.ReadLine();
 
-            sozluk.Add(tkelime, ekelime);
+            sozluk.Add(tkelime.ToLower(), ekelime.ToLower()); // ArAba --> ToLower --> araba
 
-            Console.WriteLine($"{tkelime} kelimesi {ekelime} İngilizce karşılığı ile sözlüğe eklendi.");
+            Console.WriteLine($"{tkelime.ToUpper()} kelimesi {ekelime.ToUpper()} İngilizce karşılığı ile sözlüğe eklendi.");
+        }
+
+        static void EnTrKelimeEkle(Dictionary<string, string> sozluk)
+        {
+            Console.Write($"İngilizce kelimeyi giriniz:");
+            string ekelime = Console.ReadLine();
+
+            Console.Write($"{ekelime} kelimesinin Türkçesini giriniz:");
+            string tkelime = Console.ReadLine();
+
+            sozluk.Add(ekelime.ToLower(), tkelime.ToLower());
+
+            Console.WriteLine($"{ekelime.ToUpper()} kelimesi {tkelime.ToUpper()} Türkçe karşılığı ile sözlüğe eklendi.");
         }
 
         static void Main()
@@ -92,6 +105,9 @@ namespace Ders05_01
                         break;
                     case "en":
                         EnTrKelimeBul(ing_tur);
+                        break;
+                    case "en+":
+                        EnTrKelimeEkle(ing_tur);
                         break;
                     default:
                         Console.WriteLine("Tanımlanmayan komut girdiniz!");
