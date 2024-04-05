@@ -8,7 +8,12 @@ namespace Ders08_03
 {
     public class Canli
     {
-        private int can = 100;
+        private int can;
+
+        public Canli(int can) 
+        {
+            this.Can = can;
+        }
 
         public int Can 
         {
