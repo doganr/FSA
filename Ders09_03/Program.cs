@@ -14,7 +14,7 @@
 
             Savasci karakter1 = new Savasci(4, "Can");
             Savasci karakter2 = new Savasci(10, "Güçlü");
-            Saglikci karakter3 = new Saglikci(2, "Sağlam");
+            Saglikci karakter3 = new Saglikci(2, "Sağlam");  
 
             Console.WriteLine($"(karakter1) Adı:{karakter1.Ad} " +
                               $"Gücü:{karakter1.Guc} " +
